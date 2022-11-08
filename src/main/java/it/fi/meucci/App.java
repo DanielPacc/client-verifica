@@ -33,12 +33,14 @@ public class App
             String Manda = OM.writeValueAsString(DT.msg);
             writer.writeBytes(Manda+"\n");
 
-            /*  Legge da tastiera
-            System.out.print("Scrivi un messaggio: ");
-            Scanner scan = new Scanner(System.in);
+            
+            System.out.print("Scrivi quanti biglietti vuoi comprare: ");
+            //writer.writeBytes("\n");
+            reader.readLine();
+            /*Scanner scan = new Scanner(System.in);
             String str = scan.nextLine();
             
-            // Converte la Stringa in Messaggio
+            
             Biglietto msg = new Biglietto(str);
             String toSend = OM.writeValueAsString(msg);
             
