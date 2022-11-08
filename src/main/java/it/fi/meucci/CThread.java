@@ -30,13 +30,12 @@ public class CThread extends Thread {
 
     public void run() {
         try {
-
-
-
             stringaRicevuta = indalClient.readLine();
-            Biglietto B = mapper.readValue(stringaRicevuta,Biglietto.class);
+            Messaggio B = mapper.readValue(stringaRicevuta,Messaggio.class);
             System.out.println("ricevuto: " + B.toString());
 
+            String str=indalClient.readLine();
+            System.out.print(str);
         } catch (Exception e) {
         }
         

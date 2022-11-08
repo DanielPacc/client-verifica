@@ -12,8 +12,8 @@ public class App
 {   
     static CThread DT;
     static ObjectMapper OM;
-    static BufferedReader reader;
-    static DataOutputStream writer;
+    static BufferedReader indal;
+    static DataOutputStream outverso;
 
     public static void main( String[] args )
     {
@@ -22,8 +22,8 @@ public class App
         OM = new ObjectMapper();
         Socket s = new Socket("localhost", 6789);
 
-        reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        writer = new DataOutputStream(s.getOutputStream());
+        indal = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        outverso = new DataOutputStream(s.getOutputStream());
 
        DT= new CThread(s);
        DT.start();
@@ -31,18 +31,14 @@ public class App
        while(true){
         try {
             String Manda = OM.writeValueAsString(DT.msg);
-            writer.writeBytes(Manda+"\n");
+            outverso.writeBytes(Manda+"\n");
+
 
             
-            System.out.print("Scrivi quanti biglietti vuoi comprare: ");
-            //writer.writeBytes("\n");
-            reader.readLine();
-            /*Scanner scan = new Scanner(System.in);
-            String str = scan.nextLine();
             
-            
-            Biglietto msg = new Biglietto(str);
-            String toSend = OM.writeValueAsString(msg);
+            String in=indal.readLine();
+
+            outverso.writeBytes(in);
             
             // Invia il messaggio*/
             
